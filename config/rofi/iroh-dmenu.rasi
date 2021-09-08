@@ -1,0 +1,182 @@
+/* vim:ft=css
+ * === === === === === === === === === === ===
+ * Iroh app launcher for Rofi - new version
+ * Creator: UnikMask
+ * Email: <visorunik@gmail.com>
+ * === === === === === === === === === === ===
+ */
+
+/* General configuration */
+
+
+configuration {
+	display-run: "";
+	font: "FiraCode Nerd Font Mono 20";
+	location: 1;
+	yoffset: 40;
+	xoffset: 10;
+
+	terminal: "kitty";
+}
+
+
+/* Color import */
+@import "iroh.rasi"
+
+
+window {
+	height: 40%;
+	width: 40%;
+	anchor: north west;
+}
+
+textbox-prompt-colon {
+	margin: 0 0 0 10;
+	text-color: @dust;
+	expand: false;
+	str: "";
+}
+
+/* Menu box to present menu options to user. */
+box-menu {
+	expand: false;
+	font: "FiraCode Nerd Font Mono 15";
+	orientation: horizontal;
+	spacing: 0;
+	children: [box-apps, box-run, box-dummy];
+	text-color: @fg;
+	background-color: @bg-light;
+}
+
+
+box-apps {
+	children: [textbox-apps];
+	font: inherit;
+	expand: false;
+	background-color: @bg;
+}
+textbox-apps {
+	padding: 12 12 8 12;
+	font: inherit;
+	border-color: @bg-light;
+	content: "Apps";
+	expand: false;
+	background-color: @bg-light;
+	text-color: @fg;
+	border-radius: 8 8 0 0;
+}
+
+box-run {
+	font: inherit;
+	children: [textbox-run];
+	expand: false;
+	background-color: @bg-light;
+}
+textbox-run {
+	padding: 12 12 8 12;
+	font: inherit;
+	border-color: @bg-light;
+	content: "Run";
+	expand: false;
+	background-color: @bg;
+	text-color: @dust;
+	border-radius: 0 0 0 8;
+}
+box-dummy {
+	expand: true;
+	border-color: @bg-light;
+	background-color: @bg;
+}
+
+/* Mainbox config - Menu, listview, Input bar. */
+mainbox {
+	orientation: vertical;
+	children: [box-menu, listview, inputbar];
+	background-color: @bg-light;
+}
+
+
+/* Dummy boxes */
+dummy-false {
+	expand: false;
+}
+dummy-true {
+	expand: true;
+}
+
+
+listview {
+	columns: 8;
+	anchor: center;
+	margin: 12px 4px 0 4px;
+	cycle: true;
+	dynamic: true;
+	expand: true;
+	layout: vertical; 
+}
+
+element {
+	orientation: vertical;
+	border: 0;
+	padding: 5;
+	expand: true;
+	// border: 0 5 0 5;
+	children: [box-element-icon, element-text];
+	border-color: @bg-light;
+	background-color: @bg-light;
+}
+box-element-icon {
+	expand: false;
+	children: [dummy-true, element-icon, dummy-true];
+	orientation: horizontal;
+}
+
+
+element-icon {
+	size: 1.5em;
+	// expand: true;
+	cursor: pointer;
+	// padding: 0 0 0 0.5%;
+	border: 0px;
+}
+element-text {
+	font: "FiraCode Nerd Font Mono 8";
+	text-color: @fg;
+	expand: false;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+	margin: 0 0 0 -1.85em;
+}
+
+element selected {
+	border: 0;
+	border-radius: 5;
+	border-color: @mony-light;
+	border: 0 5 0 5;
+	background-color: @mony;
+	text-color: @bg;
+	padding: 4 4 4 4;
+}
+
+inputbar {
+	children: [textbox-prompt-colon, entry, case-indicator];
+	spacing: 20px;
+	padding: 4 4 4 4;
+	background-color: @bg;
+	border-color: @bg;
+}
+case-indicator {
+}
+
+prompt {
+	str: "drun:";
+	padding: 0 5 0 0;
+}
+
+entry {
+	text-color: @fg;
+	cursor: text;
+	font: "FiraCode Nerd Font 20";
+	placeholder: "Type in app to open...";
+	placeholder-color: @dust;
+}
