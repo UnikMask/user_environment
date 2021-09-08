@@ -9,17 +9,13 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 # exec ~/.scripts/start_environ.py i3 Dead bc I was too dumb
-exec xrandr --output DP1 --auto --right-of eDP1
-exec ~/dotboy/saves/desert/theme_init.py
 exec polybar -r unikBar
 exec dunst
-exec kdeconnect
-exec mpDris2
 exec xbindkeys
 exec nm-applet
 exec picom &
-exec clight
 exec easyeffects --gapplication-service
+exec feh --bg-scale ~/.config/i3/wallpaper.jpg
 # exec ~/scripts/pcModed.sh
 
 
